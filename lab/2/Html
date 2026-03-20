@@ -9,7 +9,8 @@
     <h2>Перевірка роботи функцій (дивіться консоль)</h2>
 
 
-    <script src="java.script"></script>
+    <script src="lab2_lib.js"></script>
+    <script src="lab2.js"></script>
 
 
   
