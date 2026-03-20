@@ -1,1 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Lab Test</title>
+</head>
+<body>
+    <h1>Результати тестів дивись у консолі (F12)</h1>
 
+    <!-- Підключаємо твій код -->
+   <script src="index.js"></script>
+
+<script>
+    // Видаляємо 'const', просто присвоюємо значення глобальній змінній
+    var lib = { query, select, filterIn };
+</script>
+
+<script src="checks.js"></script>
+</body>
+</html>
