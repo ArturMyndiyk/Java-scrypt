@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 1_1</title>
+</head>
+<body>
+
+    <h2>Перевірка роботи функцій (дивіться консоль)</h2>
+
+
+    <script src="java.script"></script>
+    <script src="script.js"></script>
+ 
+
+
+  
+</body>
+</html>
