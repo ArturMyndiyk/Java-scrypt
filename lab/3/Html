@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота 3</title>
+    <style>
+        section { border-bottom: 1px solid #ccc; padding: 10px; }
+        .result { color: blue; margin-top: 5px; }
+    </style>
+</head>
+<body>
 
+    <section>
+        <h3>1. Поточна дата</h3>
+        <button id="btn1">Виконати</button>
+        <div id="res1" class="result"></div>
+    </section>
+
+    <section>
+        <h3>3. Дата N днів назад</h3>
+        <input type="number" id="daysAgoInput" placeholder="Введіть N">
+        <button id="btn3">Обчислити</button>
+        <div id="res3" class="result"></div>
+    </section>
+
+    <section>
+        <h3>4. Останній день місяця</h3>
+        Рік: <input type="number" id="yearInput" value="2024">
+        Місяць (0-11): <input type="number" id="monthInput" value="1">
+        <button id="btn4">Дізнатись</button>
+        <div id="res4" class="result"></div>
+    </section>
+
+    <script src="lab3_lib.js"></script>
+    <script src="lab3.js"></script>
+</body>
+</html>
