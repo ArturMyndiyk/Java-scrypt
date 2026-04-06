@@ -2,36 +2,60 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Лабораторна робота 3</title>
+    <title>Лабораторна робота: Робота з датами</title>
     <style>
-        section { border-bottom: 1px solid #ccc; padding: 10px; }
-        .result { color: blue; margin-top: 5px; }
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; background: #f4f4f4; }
+        .block { background: white; padding: 15px; margin-bottom: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        input { padding: 5px; margin: 5px 0; }
+        button { cursor: pointer; padding: 5px 15px; background: #007bff; color: white; border: none; border-radius: 4px; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 10px; font-weight: bold; color: #333; }
     </style>
 </head>
 <body>
 
-    <section>
-        <h3>1. Поточна дата</h3>
+    <div class="block">
+        <h3>1 & 2. Поточна дата та інформація про день</h3>
         <button id="btn1">Виконати</button>
         <div id="res1" class="result"></div>
-    </section>
+    </div>
 
-    <section>
+    <div class="block">
         <h3>3. Дата N днів назад</h3>
         <input type="number" id="daysAgoInput" placeholder="Введіть N">
-        <button id="btn3">Обчислити</button>
+        <button id="btn3">Розрахувати</button>
         <div id="res3" class="result"></div>
-    </section>
+    </div>
 
-    <section>
+    <div class="block">
         <h3>4. Останній день місяця</h3>
-        Рік: <input type="number" id="yearInput" value="2024">
-        Місяць (0-11): <input type="number" id="monthInput" value="1">
+        <input type="number" id="yearInput" placeholder="Рік (напр. 2024)">
+        <input type="number" id="monthInput" placeholder="Місяць (0-11)">
         <button id="btn4">Дізнатись</button>
         <div id="res4" class="result"></div>
-    </section>
+    </div>
 
-    <script src="lab3_lib.js"></script>
-    <script src="lab3.js"></script>
+    <div class="block">
+        <h3>5. Статистика секунд</h3>
+        <button id="btn5">Оновити секунди</button>
+        <div id="res5" class="result"></div>
+    </div>
+
+    <div class="block">
+        <h3>9. Парсинг дати з рядка</h3>
+        <p><small>Підтримувані формати: YYYY-MM-DD, DD.MM.YYYY, MM/DD/YYYY</small></p>
+        <input type="text" id="dateStringInput" placeholder="Наприклад: 31.12.2025">
+        <button id="btn9">Перетворити</button>
+        <div id="res9" class="result"></div>
+    </div>
+
+    <div class="block">
+        <h3>10. Локалізована дата</h3>
+        <input type="text" id="langInput" placeholder="uk, en, ru" value="uk">
+        <button id="btn10">Вивести</button>
+        <div id="res10" class="result"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
