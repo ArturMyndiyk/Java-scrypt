@@ -2,56 +2,70 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Лабораторна робота: Робота з датами</title>
+    <title>Робота з датами JS</title>
     <style>
         body { font-family: sans-serif; line-height: 1.6; padding: 20px; background: #f4f4f4; }
-        .block { background: white; padding: 15px; margin-bottom: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        input { padding: 5px; margin: 5px 0; }
+        .task-block { background: white; padding: 15px; margin-bottom: 10px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         button { cursor: pointer; padding: 5px 15px; background: #007bff; color: white; border: none; border-radius: 4px; }
-        button:hover { background: #0056b3; }
-        .result { margin-top: 10px; font-weight: bold; color: #333; }
+        input { padding: 5px; margin: 5px 0; }
+        .result { margin-top: 10px; font-weight: bold; color: #2c3e50; }
+        h3 { margin-top: 0; color: #333; }
     </style>
 </head>
 <body>
 
-    <div class="block">
-        <h3>1 & 2. Поточна дата та інформація про день</h3>
-        <button id="btn1">Виконати</button>
+    <h2>Лабораторна робота: Дати в JS</h2>
+
+    <div class="task-block">
+        <h3>1 & 2. Поточна дата та день</h3>
+        <button id="btn1">Показати дату</button>
         <div id="res1" class="result"></div>
     </div>
 
-    <div class="block">
-        <h3>3. Дата N днів назад</h3>
-        <input type="number" id="daysAgoInput" placeholder="Введіть N">
+    <div class="task-block">
+        <h3>3. Дата N днів назад/вперед</h3>
+        <input type="number" id="daysAgoInput" placeholder="Введіть N (напр. 5 або -5)">
         <button id="btn3">Розрахувати</button>
         <div id="res3" class="result"></div>
     </div>
 
-    <div class="block">
+    <div class="task-block">
         <h3>4. Останній день місяця</h3>
-        <input type="number" id="yearInput" placeholder="Рік (напр. 2024)">
+        <input type="number" id="yearInput" placeholder="Рік (2026)">
         <input type="number" id="monthInput" placeholder="Місяць (0-11)">
         <button id="btn4">Дізнатись</button>
         <div id="res4" class="result"></div>
     </div>
 
-    <div class="block">
+    <div class="task-block">
         <h3>5. Статистика секунд</h3>
-        <button id="btn5">Оновити секунди</button>
+        <button id="btn5">Отримати дані</button>
         <div id="res5" class="result"></div>
     </div>
 
-    <div class="block">
+    <div class="task-block">
+        <h3>7. Різниця між сьогодні та 1 січня 2027</h3>
+        <button id="btn7">Порахувати дні</button>
+        <div id="res7" class="result"></div>
+    </div>
+
+    <div class="task-block">
+        <h3>8. Відносний формат (тест: 2 хв назад)</h3>
+        <button id="btn8">Форматувати</button>
+        <div id="res8" class="result"></div>
+    </div>
+
+    <div class="task-block">
         <h3>9. Парсинг дати з рядка</h3>
-        <p><small>Підтримувані формати: YYYY-MM-DD, DD.MM.YYYY, MM/DD/YYYY</small></p>
-        <input type="text" id="dateStringInput" placeholder="Наприклад: 31.12.2025">
-        <button id="btn9">Перетворити</button>
+        <p><small>Формати: ДД.ММ.РРРР або РРРР-ММ-ДД</small></p>
+        <input type="text" id="dateStringInput" placeholder="напр. 24.08.1991">
+        <button id="btn9">Створити об'єкт</button>
         <div id="res9" class="result"></div>
     </div>
 
-    <div class="block">
-        <h3>10. Локалізована дата</h3>
-        <input type="text" id="langInput" placeholder="uk, en, ru" value="uk">
+    <div class="task-block">
+        <h3>10. Локалізація</h3>
+        <input type="text" id="langInput" placeholder="uk, en, de...">
         <button id="btn10">Вивести</button>
         <div id="res10" class="result"></div>
     </div>
