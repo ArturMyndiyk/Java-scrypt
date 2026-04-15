@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 1 & 2. Поточна дата та назва дня
+    // 1 & 2. Поточна дата
     document.getElementById('btn1').addEventListener('click', () => {
         let now = new Date();
         const info = getWeekDayInfo(now);
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('res1').innerHTML = s;
     });
 
-    // 3. Дата N днів назад
+    // 3. Дата N днів назад (Завдання 3)
     document.getElementById('btn3').addEventListener('click', () => {
         let n = document.getElementById('daysAgoInput').value;
         if(n === "") return;
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('res3').innerText = "Результат: " + formatShortDate(resultDate);
     });
 
-    // 4. Останній день місяця
+    // 4. Останній день місяця (Завдання 4)
     document.getElementById('btn4').addEventListener('click', () => {
         let y = document.getElementById('yearInput').value;
         let m = document.getElementById('monthInput').value; 
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('res4').innerText = "Останній день: " + lastDay;
     });
 
-    // 5. Секунди
+    // 5. Секунди (Завдання 5)
     document.getElementById('btn5').addEventListener('click', () => {
         let stats = getSecondsStats();
         document.getElementById('res5').innerHTML = 
@@ -37,18 +37,32 @@ document.addEventListener("DOMContentLoaded", () => {
             `До кінця дня залишилось: ${stats.left} сек.`;
     });
 
-    // 9. Створення дати з рядка
+    // 7. Різниця між датами (Завдання 7)
+    document.getElementById('btn7').addEventListener('click', () => {
+        let d1 = new Date();
+        let d2 = new Date(2027, 0, 1); 
+        let diff = getDatesDiff(d1, d2);
+        document.getElementById('res7').innerText = `До 1 січня 2027 року залишилось: ${diff} днів`;
+    });
+
+    // 8. Відносний формат (Завдання 8)
+    document.getElementById('btn8').addEventListener('click', () => {
+        let testDate = new Date(new Date() - 120000); 
+        document.getElementById('res8').innerText = "Тест (2 хв тому): " + formatDateRelative(testDate);
+    });
+
+    // 9. Парсинг дати (Завдання 9)
     document.getElementById('btn9').addEventListener('click', () => {
         let input = document.getElementById('dateStringInput').value;
         let dateObj = parseDateString(input);
         if (dateObj) {
-            document.getElementById('res9').innerText = "Об'єкт створено: " + dateObj.toString();
+            document.getElementById('res9').innerText = "Об'єкт: " + dateObj.toString();
         } else {
             document.getElementById('res9').innerText = "Невірний формат!";
         }
     });
 
-    // 10. Локалізація
+    // 10. Локалізація (Завдання 10)
     document.getElementById('btn10').addEventListener('click', () => {
         let lang = document.getElementById('langInput').value || 'uk';
         let formatted = getLocalizedDate(new Date(), lang);
@@ -56,41 +70,39 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// --- Функції логіки ---
-
+// 1. Інформація про день тижня
 function getWeekDayInfo(date) {
     const days = ['неділя', 'понеділок', 'вівторок', 'середа', 'четвер', 'п’ятниця', 'субота'];
     let dayNum = date.getDay();
-    let normalNum = dayNum === 0 ? 7 : dayNum; // Перетворюємо 0 (нд) на 7
-    return {
-        dayNumber: normalNum,
-        dayName: days[dayNum]
-    };
+    let normalNum = dayNum === 0 ? 7 : dayNum;
+    return { dayNumber: normalNum, dayName: days[dayNum] };
 }
 
+// 3. N днів назад
 function getNDaysAgo(n) {
     let date = new Date();
     date.setDate(date.getDate() - n);
     return date;
 }
 
+// 4. Останній день місяця
 function getLastDayOfMonth(year, month) {
-    // Встановлюємо 0-й день наступного місяця, що автоматично повертає останній день поточного
     let date = new Date(year, month + 1, 0);
     return date.getDate();
 }
 
+// 5. Секунди
 function getSecondsStats() {
     let now = new Date();
     let startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     let endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-    
     return {
         passed: Math.floor((now - startOfDay) / 1000),
         left: Math.floor((endOfDay - now) / 1000)
     };
 }
 
+// 6. Формат ДД.ММ.РРРР
 function formatShortDate(date) {
     let dd = String(date.getDate()).padStart(2, '0');
     let mm = String(date.getMonth() + 1).padStart(2, '0');
@@ -98,13 +110,13 @@ function formatShortDate(date) {
     return `${dd}.${mm}.${yyyy}`;
 }
 
-// 7. Різниця між датами (в днях)
+// 7. Різниця в днях
 function getDatesDiff(d1, d2) {
     let diff = Math.abs(d1 - d2);
     return Math.floor(diff / (1000 * 60 * 60 * 24));
 }
 
-// 8. Відносний формат
+// 8. Відносний формат (Виправлено під дд.мм.рр гг:мм)
 function formatDateRelative(date) {
     let diff = new Date() - date;
     if (diff < 1000) return "тільки що";
@@ -115,19 +127,21 @@ function formatDateRelative(date) {
     let min = Math.floor(diff / 60000);
     if (min < 60) return `${min} хв. назад`;
     
-    return formatShortDate(date) + " " + 
-           String(date.getHours()).padStart(2, '0') + ":" + 
-           String(date.getMinutes()).padStart(2, '0');
+    let d = String(date.getDate()).padStart(2, '0');
+    let m = String(date.getMonth() + 1).padStart(2, '0');
+    let y = String(date.getFullYear()).slice(-2);
+    let h = String(date.getHours()).padStart(2, '0');
+    let mi = String(date.getMinutes()).padStart(2, '0');
+    
+    return `${d}.${m}.${y} ${h}:${mi}`;
 }
 
-// 9. Парсинг (підтримка основних форматів)
+// 9. Парсинг
 function parseDateString(str) {
-    // Спроба розпізнати формат ДД.ММ.РРРР
     let parts = str.split('.');
     if (parts.length === 3) {
         return new Date(parts[2], parts[1] - 1, parts[0]);
     }
-    // Спроба стандартного JS парсингу (YYYY-MM-DD або MM/DD/YYYY)
     let d = new Date(str);
     return isNaN(d.getTime()) ? null : d;
 }
@@ -135,14 +149,9 @@ function parseDateString(str) {
 // 10. Локалізація
 function getLocalizedDate(date, lang) {
     const options = { 
-        weekday: 'long', 
-        day: 'numeric', 
-        month: 'long', 
-        year: 'numeric', 
-        era: 'long',
-        hour: '2-digit', 
-        minute: '2-digit', 
-        second: '2-digit' 
+        weekday: 'long', day: 'numeric', month: 'long', 
+        year: 'numeric', era: 'long', hour: '2-digit', 
+        minute: '2-digit', second: '2-digit' 
     };
     return date.toLocaleDateString(lang, options);
 }
