@@ -70,6 +70,6 @@
         <div id="res10" class="result"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="lab3_lib.js"></script>
 </body>
 </html>
